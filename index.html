@@ -50,20 +50,21 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // add a marker in the given location, attach some popup content to it and open the popup
+/*
 L.marker([25.0263075,121.543846]).addTo(map)
 		.bindPopup('請點選地圖上想要標記的點，然後填寫資料送出，其他人就可以及時看到喔～～～')
 		.openPopup();
+*/
 
 $.ajax("output.csv")
   .done(function( data ) {
 		var results = $.parse(data, {
     header: false,
     dynamicTyping: false,
-    preview: 10,
+    preview: 100,
     step: function(data, file, inputElem) {
         data.results.forEach(function(data){
 					// gender: 0 boy 1 girl
-//["", "3470597", "19971019", "愛你的那一個.傷你的那一個", "WhatismyID", "張佳祺", "0", "7489495354551109000", "0", "0", "1", "0", "1403085280", "0", "1400084015", "24.988679885864258", "121.5671157836914", "1403074823", "3470597"]
 					var text_color = ['cornflowerblue','hotpink'];
 					var icons = ['male', 'female'];
 					var marker_color = ['blue','red'];
