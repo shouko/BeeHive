@@ -3,9 +3,12 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="http://www.im.ntu.edu.tw/~b102020/imyourangel/css/bootstrap.min.css" type="text/css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<link rel="stylesheet" href="./awesome-markers/leaflet.awesome-markers.css" type="text/css" />
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script src="./awesome-markers/leaflet.awesome-markers.min.js"></script>
 <script src="https://raw.githubusercontent.com/mholt/jquery.parse/master/jquery.parse.min.js"></script>
 </head>
 <body>
@@ -61,14 +64,12 @@ $.ajax("output.csv")
         data.results.forEach(function(data){
 					// gender: 0 boy 1 girl
 //["", "3470597", "19971019", "愛你的那一個.傷你的那一個", "WhatismyID", "張佳祺", "0", "7489495354551109000", "0", "0", "1", "0", "1403085280", "0", "1400084015", "24.988679885864258", "121.5671157836914", "1403074823", "3470597"]
-					data[5]
-					var color = 'cornflowerblue';
-					if(data[6] == 1){
-						color = 'hotpink';
-					}
+					var text_color = ['cornflowerblue','hotpink'];
+					var icons = ['male', 'female'];
+					var marker_color = ['blue','red'];
 //12 time
-					var marker = new L.marker([data[15],data[16]]).addTo(map)
-					.bindPopup('<span style="color:' + color + '">' + data[5] + '</span> ' + data[2] + '<br>' + data[4] + '<br>' + data[3] + '<br><br>' + timeConverter(data[12]))
+					var marker = new L.marker([data[15],data[16]], {icon: L.AwesomeMarkers.icon({icon: icons[data[6]], prefix: 'fa', markerColor: marker_color[data[6]]}) }).addTo(map)
+					.bindPopup('<span style="color:' + text_color[data[6]] + '">' + data[5] + '</span> ' + data[2] + '<br>' + data[4] + '<br>' + data[3] + '<br><br>' + timeConverter(data[12]))
 					.openPopup();;
 
 					console.log(data);
