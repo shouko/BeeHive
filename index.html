@@ -48,12 +48,12 @@ L.marker([25.0263075,121.543846]).addTo(map)
 		.openPopup();
 */
 
-$.ajax("output.csv")
+$.ajax("data.csv")
   .done(function( data ) {
 		var results = $.parse(data, {
     header: false,
     dynamicTyping: false,
-//    preview: 100,
+    preview: 350,
     step: function(data, file, inputElem) {
         data.results.forEach(function(data){
 					// gender: 0 boy 1 girl
@@ -62,7 +62,7 @@ $.ajax("output.csv")
 					var marker_color = ['blue','red'];
 //12 time
 					var marker = new L.marker([data[15],data[16]], {icon: L.AwesomeMarkers.icon({icon: icons[data[6]], prefix: 'fa', markerColor: marker_color[data[6]]}) }).addTo(map)
-					.bindPopup('Name: <span style="color:' + text_color[data[6]] + '">' + data[5] + '</span><br>Birthday: ' + data[2] + '<br>BeeTalk ID: ' + data[4] + '<br>Status: ' + data[3] + '<br><br>Last Update: ' + timeConverter(data[12]))
+					.bindPopup('<img src="avatar/' + data[7] + '">Name: <span style="color:' + text_color[data[6]] + '">' + data[5] + '</span><br>Birthday: ' + data[2] + '<br>BeeTalk ID: ' + data[4] + '<br>Status: ' + data[3] + '<br><br>Last Update: ' + timeConverter(data[12]))
 					.openPopup();;
 
 					console.log(data);
