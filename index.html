@@ -12,7 +12,7 @@
 <script src="https://raw.githubusercontent.com/mholt/jquery.parse/master/jquery.parse.min.js"></script>
 </head>
 <body>
-<div class="masthead">
+<div class="masthead" style="margin-left: 30px">
 <h3 class="muted">BeeTalk Map Demo</h3>
 </div>
 <div class="row-fluid" style="text-align: center">
@@ -34,7 +34,7 @@ function timeConverter(UNIX_timestamp){
  }
 
 // create a map in the "map" div, set the view to a given place and zoom
-var map = L.map('map').setView([25.0263075,121.543846], 15);
+var map = L.map('map').setView([25.0192013,121.5407913], 16);
 
 // add an OpenStreetMap tile layer
 L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
