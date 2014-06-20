@@ -11,9 +11,8 @@ Data file of users is named **data.csv** and located at the root directory of Be
 
 Notice: The generated **data.csv** file might be large, to lower the impact on performance, you may adjust the **preview** parameter near the bottom of **index.html** to a smaller number, while the default value is 350, then the browser would only read that amount of data.
 
-## Known Issues
- - User avatar not showing
- - Data is not realtime updated
+## Future Plan
+ - Show realtime data
 
 ## Credits
  - Inspired by Denny Huang
