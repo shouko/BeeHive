@@ -28,7 +28,6 @@
 <script src="./jquery.min.js"></script>
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 <script src="./awesome-markers/leaflet.awesome-markers.min.js"></script>
-<script src="./jquery.parse.min.js"></script>
 </head>
 <body>
 <div class="logo">
@@ -67,26 +66,20 @@ L.marker([25.0263075,121.543846]).addTo(map)
 		.openPopup();
 */
 
-$.ajax("data.csv")
+$.ajax("data.php")
   .done(function( data ) {
-		var results = $.parse(data, {
-    header: false,
-    dynamicTyping: false,
-    preview: 350,
-    step: function(data, file, inputElem) {
-        data.results.forEach(function(data){
+      data.forEach(function(data){
 					// gender: 0 boy 1 girl
 					var text_color = ['cornflowerblue','hotpink'];
 					var icons = ['male', 'female'];
 					var marker_color = ['blue','red'];
 //12 time
-					var marker = new L.marker([data[15],data[16]], {icon: L.AwesomeMarkers.icon({icon: icons[data[6]], prefix: 'fa', markerColor: marker_color[data[6]]}) }).addTo(map)
-					.bindPopup('<img src="http://filestoretw1.beetalkmobile.com:8081/file/' + data[7] + '"><br>Name: <span style="color:' + text_color[data[6]] + '">' + data[5] + '</span><br>Birthday: ' + data[2] + '<br>BeeTalk ID: ' + data[4] + '<br>Status: ' + data[3] + '<br><br>Last Update: ' + timeConverter(data[12]));
+					var marker = new L.marker([data['latitude'],data['longtitude']], {icon: L.AwesomeMarkers.icon({icon: icons[data['gender']], prefix: 'fa', markerColor: marker_color[data['gender']]}) }).addTo(map)
+					.bindPopup('<img src="http://filestoretw1.beetalkmobile.com:8081/file/' + data['avatar'] + '"><br>Name: <span style="color:' + text_color[data['gender']] + '">' + data['name'] + '</span><br>Birthday: ' + data['birthday'] + '<br>BeeTalk ID: ' + data['customized_id'] + '<br>Status: ' + data['signature'] + '<br><br>Last Update: ' + timeConverter(data['timestamp']));
 
 					console.log(data);
 				});
-    }
-		});
+
   });
 
 
