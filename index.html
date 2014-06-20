@@ -59,13 +59,6 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// add a marker in the given location, attach some popup content to it and open the popup
-/*
-L.marker([25.0263075,121.543846]).addTo(map)
-		.bindPopup('請點選地圖上想要標記的點，然後填寫資料送出，其他人就可以及時看到喔～～～')
-		.openPopup();
-*/
-
 $.ajax("data.php")
   .done(function( data ) {
       data.forEach(function(data){
@@ -73,7 +66,7 @@ $.ajax("data.php")
 					var text_color = ['cornflowerblue','hotpink'];
 					var icons = ['male', 'female'];
 					var marker_color = ['blue','red'];
-//12 time
+
 					var marker = new L.marker([data['latitude'],data['longtitude']], {icon: L.AwesomeMarkers.icon({icon: icons[data['gender']], prefix: 'fa', markerColor: marker_color[data['gender']]}) }).addTo(map)
 					.bindPopup('<img src="http://filestoretw1.beetalkmobile.com:8081/file/' + data['avatar'] + '"><br>Name: <span style="color:' + text_color[data['gender']] + '">' + data['name'] + '</span><br>Birthday: ' + data['birthday'] + '<br>BeeTalk ID: ' + data['customized_id'] + '<br>Status: ' + data['signature'] + '<br><br>Last Update: ' + timeConverter(data['timestamp']));
 
