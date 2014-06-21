@@ -4,7 +4,7 @@ require('db.config.php');
 // read 100 rows of data for default
 $limit = 100;
 if ( isset($_GET['limit']) ){
-	$limit = $_GET['limit'];
+	$limit = abs($_GET['limit']);
 }
 
 $dsn = "mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=utf8";
