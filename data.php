@@ -1,13 +1,19 @@
 <?php
 require('db.config.php');
 
+// read 100 rows of data for default
+$limit = 100;
+if ( isset($_GET['limit']) ){
+	$limit = $_GET['limit'];
+}
+
 $dsn = "mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=utf8";
 $dbh = new PDO($dsn, DB_USER, DB_PASS);
 
-$sql = "SELECT * FROM `bb_user_info`, `bb_user_geo_info` WHERE `bb_user_geo_info`.`uid` = `bb_user_info`.`userid` ORDER by `timestamp` DESC LIMIT 0,3000";
+$sql = "SELECT * FROM `bb_user_info`, `bb_user_geo_info` WHERE `bb_user_geo_info`.`uid` = `bb_user_info`.`userid` ORDER by `timestamp` DESC LIMIT 0, ?";
 $sth = $dbh -> prepare($sql);
 
-// options for requested data might be available in the future, prepared for $sth -> (array('option1','option2'));
+$sth -> bindValue(1, $limit, PDO::PARAM_INT);
 $sth -> execute();
 $sth -> setFetchMode(PDO::FETCH_ASSOC);
 $result = $sth->fetchAll();
