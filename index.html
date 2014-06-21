@@ -18,7 +18,8 @@
 		position: absolute;
 		top: 20px;
 		left:20px;
-		width: 200px;
+		width: 210px;
+    height: 65px;
 		padding-left: 20px;
 		z-index: 9999;
 		background: #FFCD30;
@@ -57,7 +58,7 @@ $( document ).ready(function() {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  $('#myModal').modal('show');
+  $('#welcome').modal('show');
   $('#load-data-button').click(function () {
       $.ajax("data.php")
         .done(function( data ) {
@@ -71,7 +72,7 @@ $( document ).ready(function() {
 
                 console.log(data);
               });
-              $('#myModal').modal('hide');
+              $('#welcome').modal('hide');
         });
   });
 });
@@ -80,10 +81,10 @@ $( document ).ready(function() {
 </head>
 <body>
 <div class="logo">
-<h3><span style="color: white"><span style="vertical-align: text-bottom">&#11042;</span> Bee</span>Hive <span style="color: white; vertical-align: text-bottom; font-size: 0.7em">alpha</span></h3>
+<h3><span style="color: white"><span style="vertical-align: text-top">&#11042;</span> Bee</span>Hive <span style="color: white; vertical-align: text-bottom; font-size: 0.7em">alpha</span></h3>
 </div>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="welcome" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -95,7 +96,7 @@ $( document ).ready(function() {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="load-data-button">Load Data</button>
+        <button type="button" class="btn btn-warning" id="load-data-button">Load Data</button>
       </div>
     </div>
   </div>
