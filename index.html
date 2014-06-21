@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>BeeHive</title>
-<link rel="stylesheet" href="http://www.im.ntu.edu.tw/~b102020/imyourangel/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="./bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" href="./awesome-markers/leaflet.awesome-markers.css" type="text/css" />
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
@@ -26,15 +26,10 @@
 	}
 </style>
 <script src="./jquery.min.js"></script>
+<script src="./bootstrap.min.js"></script>
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 <script src="./awesome-markers/leaflet.awesome-markers.min.js"></script>
-</head>
-<body>
-<div class="logo">
-<h3><span style="color: white"><span style="vertical-align: text-bottom">&#11042;</span> Bee</span>Hive <span style="color: white; vertical-align: text-bottom; font-size: 0.7em">alpha</span></h3>
-</div>
-	<div id="map"></div>
-<script>
+<script type="text/javascript">
 
 function timeConverter(UNIX_timestamp){
  var a = new Date(UNIX_timestamp*1000);
@@ -49,34 +44,64 @@ function timeConverter(UNIX_timestamp){
      return time;
  }
 
-// create a map in the "map" div, set the view to a given place and zoom
-var map = L.map('map',{ zoomControl: false }).setView([25.0192013,121.5407913], 16);
-// add zoom control to top right, since site logo is on topleft
-new L.Control.Zoom({ position: 'topright' }).addTo(map);
+var map;
 
-// add an OpenStreetMap tile layer
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+$( document ).ready(function() {
+  // create a map in the "map" div, set the view to a given place and zoom
+  var map = L.map('map',{ zoomControl: false }).setView([25.0192013,121.5407913], 16);
+  // add zoom control to top right, since site logo is on topleft
+  new L.Control.Zoom({ position: 'topright' }).addTo(map);
 
-$.ajax("data.php")
-  .done(function( data ) {
-      data.forEach(function(data){
-					// gender: 0 boy 1 girl
-					var text_color = ['cornflowerblue','hotpink'];
-					var icons = ['male', 'female'];
-					var marker_color = ['blue','red'];
+  // add an OpenStreetMap tile layer
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
 
-					var marker = new L.marker([data['latitude'],data['longtitude']], {icon: L.AwesomeMarkers.icon({icon: icons[data['gender']], prefix: 'fa', markerColor: marker_color[data['gender']]}) }).addTo(map)
-					.bindPopup('<img src="http://filestoretw1.beetalkmobile.com:8081/file/' + data['avatar'] + '"><br>Name: <span style="color:' + text_color[data['gender']] + '">' + data['name'] + '</span><br>Birthday: ' + data['birthday'] + '<br>BeeTalk ID: ' + data['customized_id'] + '<br>Status: ' + data['signature'] + '<br><br>Last Update: ' + timeConverter(data['timestamp']));
+  $('#myModal').modal('show');
+  $('#load-data-button').click(function () {
+      $.ajax("data.php")
+        .done(function( data ) {
+            // gender: 0 boy 1 girl
+            var text_color = ['cornflowerblue','hotpink'];
+            var icons = ['male', 'female'];
+            var marker_color = ['blue','red'];
+            data.forEach(function(data){
+                var marker = new L.marker([data['latitude'],data['longtitude']], {icon: L.AwesomeMarkers.icon({icon: icons[data['gender']], prefix: 'fa', markerColor: marker_color[data['gender']]}) }).addTo(map)
+                .bindPopup('<img src="http://filestoretw1.beetalkmobile.com:8081/file/' + data['avatar'] + '"><br>Name: <span style="color:' + text_color[data['gender']] + '">' + data['name'] + '</span><br>Birthday: ' + data['birthday'] + '<br>BeeTalk ID: ' + data['customized_id'] + '<br>Status: ' + data['signature'] + '<br><br>Last Update: ' + timeConverter(data['timestamp']));
 
-					console.log(data);
-				});
-
+                console.log(data);
+              });
+              $('#myModal').modal('hide');
+        });
   });
-
-
+});
 
 </script>
+</head>
+<body>
+<div class="logo">
+<h3><span style="color: white"><span style="vertical-align: text-bottom">&#11042;</span> Bee</span>Hive <span style="color: white; vertical-align: text-bottom; font-size: 0.7em">alpha</span></h3>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Welcome</h4>
+      </div>
+      <div class="modal-body">
+        Welcome to BeeHive
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="load-data-button">Load Data</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<div id="map"></div>
+
 </body>
 </html>
