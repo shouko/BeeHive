@@ -61,7 +61,7 @@ $( document ).ready(function() {
   $('#welcome').modal('show');
   $('#load-data-button').click(function () {
       $(this).button('loading');
-      $.ajax("data.php?limit=" + $('input[name=load-limit]:checked').val())
+      $.ajax("data.php?limit=" + $('input[name=load-limit]:checked').val() + "&gender=" + $('input[name=load-gender]:checked').val())
         .done(function( data ) {
             // gender: 0 boy 1 girl
             var text_color = ['cornflowerblue','hotpink'];
@@ -73,6 +73,7 @@ $( document ).ready(function() {
 
                 console.log(data);
               });
+              $(this).button('reset');
               $('#welcome').modal('hide');
         });
   });
@@ -93,7 +94,29 @@ $( document ).ready(function() {
         <h4 class="modal-title">歡迎使用 BeeHive</h4>
       </div>
       <div class="modal-body">
-        請選擇載入資料的筆數：<br>
+        <div class="form-group">
+        顯示性別：<br>
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="load-gender" value="-1" checked>
+            不限
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="load-gender" value="0">
+            男生
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="load-gender" value="1">
+            女生
+          </label>
+        </div>
+        </div>
+        <div class="form-group">
+        載入資料的筆數：<br>
         <div class="radio-inline">
           <label>
             <input type="radio" name="load-limit" value="100" checked>
@@ -123,6 +146,7 @@ $( document ).ready(function() {
             <input type="radio" name="load-limit" value="15000">
             15000
           </label>
+        </div>
         </div>
         </div>
       <div class="modal-footer">
