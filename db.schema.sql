@@ -2,7 +2,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE `bb_user_geo_info` (
   `latitude` double NOT NULL,
-  `longtitude` double NOT NULL,
+  `longitude` double NOT NULL,
   `timestamp` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   PRIMARY KEY (`timestamp`,`uid`)

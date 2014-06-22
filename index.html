@@ -68,7 +68,7 @@ $( document ).ready(function() {
             var icons = ['male', 'female'];
             var marker_color = ['blue','red'];
             data.forEach(function(data){
-                var marker = new L.marker([data['latitude'],data['longtitude']], {icon: L.AwesomeMarkers.icon({icon: icons[data['gender']], prefix: 'fa', markerColor: marker_color[data['gender']]}) }).addTo(map)
+                var marker = new L.marker([data['latitude'],data['longitude']], {icon: L.AwesomeMarkers.icon({icon: icons[data['gender']], prefix: 'fa', markerColor: marker_color[data['gender']]}) }).addTo(map)
                 .bindPopup('<img src="http://filestoretw1.beetalkmobile.com:8081/file/' + data['avatar'] + '"><br>Name: <span style="color:' + text_color[data['gender']] + '">' + data['name'] + '</span><br>Birthday: ' + data['birthday'] + '<br>BeeTalk ID: ' + data['customized_id'] + '<br>Status: ' + data['signature'] + '<br><br>Last Update: ' + timeConverter(data['timestamp']));
 
                 console.log(data);
