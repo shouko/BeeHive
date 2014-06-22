@@ -49,7 +49,7 @@ var map;
 
 $( document ).ready(function() {
   // create a map in the "map" div, set the view to a given place and zoom
-  var map = L.map('map',{ zoomControl: false }).setView([25.0192013,121.5407913], 16);
+  map = L.map('map',{ zoomControl: false }).setView([25.0192013,121.5407913], 16);
   // add zoom control to top right, since site logo is on topleft
   new L.Control.Zoom({ position: 'topright' }).addTo(map);
 
