@@ -13,7 +13,7 @@ CREATE TABLE `bb_user_info` (
   `userid` int(11) NOT NULL,
   `birthday` int(11) NOT NULL,
   `signature` varchar(255) NOT NULL,
-  `customized_id` int(11) NOT NULL,
+  `customized_id` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `gender` int(11) NOT NULL,
   `avatar` bigint(20) NOT NULL,
