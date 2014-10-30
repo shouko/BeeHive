@@ -11,18 +11,18 @@ CREATE TABLE `bb_user_geo_info` (
 CREATE TABLE `bb_user_info` (
   `userid` int(11) NOT NULL,
   `aliasInfo_id` bigint(20) NOT NULL,
-  `birthday` int(11) NOT NULL,
   `signature` varchar(255) NOT NULL,
-  `customized_id` varchar(255) NOT NULL,
+  `birthday` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `gender` int(11) NOT NULL,
+  `customized_id` varchar(255) NOT NULL,
   `avatar` bigint(20) NOT NULL,
   `cover` bigint(20) NOT NULL,
+  `like` int(11) NOT NULL,
   `extras` int(11) NOT NULL,
+  `gender` int(11) NOT NULL,
   `relationship` int(11) NOT NULL,
   `type` int(11) NOT NULL,
   `updateTime` int(11) NOT NULL,
-  `like` int(11) NOT NULL,
   `version` int(11) NOT NULL,
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
