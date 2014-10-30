@@ -9,8 +9,8 @@ CREATE TABLE `bb_user_geo_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `bb_user_info` (
-  `aliasInfo_id` bigint(20) NOT NULL,
   `userid` int(11) NOT NULL,
+  `aliasInfo_id` bigint(20) NOT NULL,
   `birthday` int(11) NOT NULL,
   `signature` varchar(255) NOT NULL,
   `customized_id` varchar(255) NOT NULL,

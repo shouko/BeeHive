@@ -1,4 +1,5 @@
 avatar
 data.csv
 .DS_Store
+tool/tmp
 db.config.php

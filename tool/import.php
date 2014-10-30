@@ -16,16 +16,26 @@ try{
 	$dsi = 'sqlite:'.$argv[1];
 	$dbi = new PDO($dsi);
 
+/*
 	$sti = $dbi->query('SELECT * FROM `bb_user_info`');
 
-	$sql = 'REPLACE INTO `bb_user_info` VALUES(:userid, :birthday, :signature, :customized_id, :name, :gender, :avatar, :cover, :extras, :relationship, :type, :updateTime, :like, :version)';
+
+	$sql = "INSERT INTO `bb_user_info` (`userid`, `aliasInfo_id`, `birthday`, `signature`, `customized_id`, `name`, `gender`, `avatar`, `cover`, `extras`, `relationship`, `type`, `updateTime`, `like`, `version`) VALUES(:userid, :aliasInfo_id, :birthday, :signature, :customized_id, :name, :gender, :avatar, :cover, :extras, :relationship, :type, :updateTime, :like, :version)";
 	$stmt = $dbh->prepare($sql);
 
 	while($row = $sti->fetch(PDO::FETCH_ASSOC)){
 		print_r($row);
-		unset($row['aliasInfo_id']);
 		$stmt->execute($row);
-		echo "\n";
+	}
+*/
+
+	$sti = $dbi->query('SELECT * FROM `bb_user_geo_info`');
+
+	$sql = "INSERT INTO `bb_user_geo_info` (`latitude`,`longitude`,`timestamp`,`uid`) VALUES(:latitude, :longitude, :timestamp, :uid)";
+	$stmt = $dbh->prepare($sql);
+
+	while($row = $sti->fetch(PDO::FETCH_ASSOC)){
+			$stmt->execute($row);
 	}
 
 } catch(PDOException $e) {
