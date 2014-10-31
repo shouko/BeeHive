@@ -61,7 +61,7 @@ $( document ).ready(function() {
   $('#welcome').modal('show');
   $('#load-data-button').click(function () {
       $(this).button('loading');
-      $.ajax("data.php?limit=" + $('input[name=load-limit]:checked').val() + "&gender=" + $('input[name=load-gender]:checked').val())
+      $.ajax("data.php?limit=" + $('input[name=load-limit]:checked').val() + "&gender=" + $('input[name=load-gender]:checked').val() + "&uid=" + $('input[name=load-uid]').val())
         .done(function( data ) {
             // gender: 0 boy 1 girl
             var text_color = ['cornflowerblue','hotpink'];
@@ -147,6 +147,8 @@ $( document ).ready(function() {
             15000
           </label>
         </div>
+        <br>UID:<br>
+        <input name="load-uid" value="">
         </div>
         </div>
       <div class="modal-footer">
