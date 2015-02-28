@@ -73,10 +73,12 @@ $( document ).ready(function() {
 
                 console.log(data);
             });
-            $(this).button('reset');
             if($("select[name=load-place] option:selected").val() != -1){
               eval('map.setView([' + $("select[name=load-place] option:selected").val() + '], 16)');
+            }else{
+              map.setView([ data[0]['latitude'], data[0]['longitude'] ], 16);
             }
+            $(this).button('reset');
             $('#welcome').modal('hide');
         });
   });
