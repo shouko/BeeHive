@@ -15,6 +15,26 @@ if( isset($_GET['gender']) && $_GET['gender'] != '-1' ){
 	$params[] = $_GET['gender'];
 }
 
+if( isset($_GET['place']) && $_GET['place'] != '-1' && isset($_GET['range']) && $_GET['range'] != 0){
+	$latlng = explode(",", $_GET['place']);
+	if(count($latlng) == 2){
+		$lt_range = $_GET['range'] / 100;
+		$sql .= " AND `bb_user_geo_info`.`longitude` > ?";
+		$sql .= " AND `bb_user_geo_info`.`longitude` < ?";
+		$sql .= " AND `bb_user_geo_info`.`latitude` > ?";
+		$sql .= " AND `bb_user_geo_info`.`latitude` < ?";
+		$bounds = array(
+			$latlng[0] - $lt_range,
+			$latlng[0] + $lt_range,
+			$latlng[1] - $lt_range,
+			$latlng[1] + $lt_range
+		);
+		foreach($bounds as $bound){
+			$params[] = $bound;
+		}
+	}
+}
+
 // read 100 rows of data for default
 $limit = 100;
 if ( isset($_GET['limit']) ){
