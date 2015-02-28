@@ -72,12 +72,12 @@ $( document ).ready(function() {
                 .bindPopup('<img src="http://filestoretw1.beetalkmobile.com:8081/file/' + data['avatar'] + '"><br>Name: <span style="color:' + text_color[data['gender']] + '">' + data['name'] + '</span><br>Birthday: ' + data['birthday'] + '<br>BeeTalk ID: ' + data['customized_id'] + '<br>Status: ' + data['signature'] + '<br><br>Last Update: ' + timeConverter(data['timestamp']));
 
                 console.log(data);
-              });
-              $(this).button('reset');
-              if($("select[name=load-place] option:selected").val() != -1){
-                eval('map.setView([' + $("select[name=load-place] option:selected").val() + '], 16)');
-              }
-              $('#welcome').modal('hide');
+            });
+            $(this).button('reset');
+            if($("select[name=load-place] option:selected").val() != -1){
+              eval('map.setView([' + $("select[name=load-place] option:selected").val() + '], 16)');
+            }
+            $('#welcome').modal('hide');
         });
   });
 });
