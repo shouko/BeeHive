@@ -74,6 +74,9 @@ $( document ).ready(function() {
                 console.log(data);
               });
               $(this).button('reset');
+              if($("select[name=load-place] option:selected").val() != -1){
+                eval('map.setView([' + $("select[name=load-place] option:selected").val() + '], 16)');
+              }
               $('#welcome').modal('hide');
         });
   });
@@ -119,21 +122,21 @@ $( document ).ready(function() {
         附近地區：
         <select name="load-place">
           <option value="-1" selected>不限</option>
-          <option value="121.51753200000009,25.046254">捷運台北車站</option>
-          <option value="121.53975200000004,25.017341000000002">臺灣大學</option>
-          <option value="121.57584300000008,24.986233">政治大學</option>
-          <option value="121.432772,25.036328">輔仁大學</option>
-          <option value="121.44556,25.167817">捷運淡水站</option>
-          <option value="121.56378199999993,25.037525">台北市政府</option>
-          <option value="120.99323200000003,24.794725">國立清華大學</option>
-          <option value="120.99673499999994,24.785915">交通大學光復校區</option>
-          <option value="121.23421699999994,25.079651">臺灣桃園國際機場</option>
-          <option value="121.19251600000007,24.969481">國立中央大學</option>
-          <option value="120.68500799999993,24.13678">台中火車站</option>
-          <option value="120.21606799999995,22.998361">成功大學</option>
-          <option value="120.30210999999997,22.639619">高雄火車站</option>
-          <option value="120.406616,22.729957">義大遊樂世界</option>
-          <option value="120.64649099999997,24.178744">逢甲夜市</option>
+          <option value="25.046254,121.51753200000009">捷運台北車站</option>
+          <option value="25.017341000000002,121.53975200000004">臺灣大學</option>
+          <option value="24.986233,121.57584300000008">政治大學</option>
+          <option value="25.036328,121.432772">輔仁大學</option>
+          <option value="25.167817,121.44556">捷運淡水站</option>
+          <option value="25.037525,121.56378199999993">台北市政府</option>
+          <option value="24.794725,120.99323200000003">國立清華大學</option>
+          <option value="24.785915,120.99673499999994">交通大學光復校區</option>
+          <option value="25.079651,121.23421699999994">臺灣桃園國際機場</option>
+          <option value="24.969481,121.19251600000007">國立中央大學</option>
+          <option value="24.13678,120.68500799999993">台中火車站</option>
+          <option value="22.998361,120.21606799999995">成功大學</option>
+          <option value="22.639619,120.30210999999997">高雄火車站</option>
+          <option value="22.729957,120.406616">義大遊樂世界</option>
+          <option value="24.178744,120.64649099999997">逢甲夜市</option>
         </select>
         周圍
         <input name="load-range" value="0">

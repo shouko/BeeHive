@@ -19,10 +19,10 @@ if( isset($_GET['place']) && $_GET['place'] != '-1' && isset($_GET['range']) && 
 	$latlng = explode(",", $_GET['place']);
 	if(count($latlng) == 2){
 		$lt_range = $_GET['range'] / 100;
-		$sql .= " AND `bb_user_geo_info`.`longitude` > ?";
-		$sql .= " AND `bb_user_geo_info`.`longitude` < ?";
 		$sql .= " AND `bb_user_geo_info`.`latitude` > ?";
 		$sql .= " AND `bb_user_geo_info`.`latitude` < ?";
+		$sql .= " AND `bb_user_geo_info`.`longitude` > ?";
+		$sql .= " AND `bb_user_geo_info`.`longitude` < ?";
 		$bounds = array(
 			$latlng[0] - $lt_range,
 			$latlng[0] + $lt_range,
