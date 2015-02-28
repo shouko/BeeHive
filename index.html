@@ -61,7 +61,7 @@ $( document ).ready(function() {
   $('#welcome').modal('show');
   $('#load-data-button').click(function () {
       $(this).button('loading');
-      $.ajax("data.php?limit=" + $('input[name=load-limit]:checked').val() + "&gender=" + $('input[name=load-gender]:checked').val() + "&uid=" + $('input[name=load-uid]').val() + "&place=" + $('input[name=load-place]').val() + "&range=" + $('input[name=load-range]').val())
+      $.ajax("data.php?limit=" + $('input[name=load-limit]:checked').val() + "&gender=" + $('input[name=load-gender]:checked').val() + "&uid=" + $('input[name=load-uid]').val() + "&place=" + $("select[name=load-place] option:selected").val() + "&range=" + $('input[name=load-range]').val())
         .done(function( data ) {
             // gender: 0 boy 1 girl
             var text_color = ['cornflowerblue','hotpink'];
