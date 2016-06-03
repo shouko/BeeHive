@@ -1,0 +1,26 @@
+{
+  "name": "beehive",
+  "version": "1.0.0",
+  "description": "BeeHive ================ BeeHive is an experiment for visualizing user location data provided by the mobile instant messaging app BeeTalk.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shouko/BeeHive.git"
+  },
+  "author": "shouko <imshouko@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shouko/BeeHive/issues"
+  },
+  "homepage": "https://github.com/shouko/BeeHive#readme",
+  "dependencies": {
+    "async": "^1.5.2",
+    "bluebird": "^3.4.0",
+    "mysql": "^2.10.2",
+    "sequelize": "^3.23.3",
+    "sqlite3": "^3.1.4"
+  }
+}

@@ -6,6 +6,12 @@ if(!isset($argv[1])){
 	exit();
 }
 
+/*
+if(abs($argv[0]) > 1464891871) {
+	exit();
+}
+*/
+
 try{
 
 	// set up destination
@@ -17,7 +23,6 @@ try{
 	$dsi = 'sqlite:'.$argv[1];
 	$dbi = new PDO($dsi);
 
-/*
 	$sti = $dbi->query('SELECT * FROM `bb_user_info`');
 
 	$sql = "INSERT IGNORE INTO `bb_user_info` (`userid`, `aliasInfo_id`, `birthday`, `signature`, `customized_id`, `name`, `gender`, `avatar`, `cover`, `extras`, `relationship`, `type`, `updateTime`, `like`, `version`) VALUES(:userid, IFNULL(:aliasInfo_id, 0), :birthday, IFNULL(:signature, ''), :customized_id, :name, :gender, :avatar, :cover, :extras, :relationship, :type, :updateTime, :like, :version)";
@@ -30,11 +35,11 @@ try{
 	}
 	$dbh->commit();
 	echo time()." inserted users\n";
-*/
 
+/*
 	$sti = $dbi->query('SELECT * FROM `bb_user_geo_info`');
 
-	$sql = "INSERT IGNORE INTO `bb_user_geo_info` (`latitude`,`longitude`,`timestamp`,`uid`) VALUES(:latitude, :longitude, :timestamp, :uid)";
+	$sql = "INSERT INTO `bb_user_geo_info` (`latitude`,`longitude`,`timestamp`,`uid`) VALUES(:latitude, :longitude, :timestamp, :uid)";
 	$stmt = $dbh->prepare($sql);
 
 	$dbh->beginTransaction();
@@ -45,6 +50,7 @@ try{
 	}
 	$dbh->commit();
 	echo time()." inserted geos\n";
+*/
 
 } catch(PDOException $e) {
 	echo $e->getMessage();

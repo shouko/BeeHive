@@ -24,5 +24,5 @@ CREATE TABLE `bb_user_info` (
   `type` int(11) NOT NULL,
   `updateTime` int(11) NOT NULL,
   `version` int(11) NOT NULL,
-  PRIMARY KEY (`userid`)
+  PRIMARY KEY (`userid`,`updateTime`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
